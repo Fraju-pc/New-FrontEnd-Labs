@@ -124,3 +124,4 @@ console.log("I would like to introduce you to our newest customer", fullName, "w
 
 
     console.log('-----------Finished------------');
+    console.log('-----------Finished------------');
