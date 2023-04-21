@@ -235,7 +235,7 @@ function reverse(x){
                          .split('')
                          .reverse()
                          .join('')
-                     ) * Math.sign(x)
+                     ) 
                    );
        } else if(typeof x == "string"){
               return(
