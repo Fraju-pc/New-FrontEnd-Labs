@@ -45,10 +45,10 @@ let person = {
   lastname: 'Armstrong',
   year: 1969,
   occupation: 'astronaut',
-}
+};
 console.log(
   `${person.firstname} ${person.lastname} was an ${person.occupation}.`
-)
+);
 
 /*
  * Using the person object from above and the given console.log for reference:
@@ -57,7 +57,9 @@ console.log(
  *
  * ↓ YOUR CODE HERE ↓ */
 // "On July 20th 1969, Niel Armstrong was the first person to set foot on the Earth's moon."
-
+console.log(
+  `On July 20th ${person.year}, ${person.firstname} ${person.lastname} was the first person to set foot on the Earth's moon.`
+);
 /*-------------------------------------------------------*/
 // Question 2: Instance of a Class
 console.log(`--------------------------
@@ -85,6 +87,9 @@ greeting.hello()
  * Step 3: A greeting should print to the console
  *
  * ↓ YOUR CODE HERE ↓ */
+
+let myGreeting = new Greeting('Patrick', 'MA')
+myGreeting.hello()
 
 /*-------------------------------------------------------*/
 // Question 3: myBook
@@ -115,6 +120,15 @@ class Book {
  *
  * ↓ YOUR CODE HERE ↓ */
 
+let myBook = new Book("Pride and Prejudice", "Jane Austen");
+console.log(myBook.author);
+console.log(myBook.title);
+
+console.log(myBook.describe());
+
+let yourBook = new Book("Dune", "Frank Herbert");
+console.log(yourBook.describe());
+
 /*-------------------------------------------------------*/
 // Question 4: Create a Class
 console.log(`--------------------------
@@ -129,6 +143,23 @@ Question 4: Create a Class \n`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+
+class Fruit {
+  constructor(name, color, taste) {
+    this.name = name
+    this.color = color
+    this.taste = taste
+  }
+
+  describe() {
+    console.log(`A ${this.name} is ${this.color} and has a ${this.taste} taste.`)
+  }
+}
+let fruit1 = new Fruit("lime", "green", "sour");
+fruit1.describe();
+
+let fruit2 = new Fruit("banana", "yellow", "sweet");
+fruit2.describe();
 
 /*-------------------------------------------------------*/
 // Question 5: Inheritance and Polymorphism
@@ -173,6 +204,11 @@ class Teacher extends Person {
  * Step 4: Call the introduction method on your new teacher instance AND the details method, make sure that the results are printed to the console.
  *
  * ↓ YOUR CODE HERE ↓ */
+let newStudent = new Student("Jacky", "student");
+let newTeacher = new Teacher("Mr. Bean", "teacher");
+
+console.log(newStudent.introduction(), newStudent.details());
+console.log(newTeacher.introduction(), newTeacher.details());
 
 /*-------------------------------------------------------*/
 // Question 6: Inheritance
@@ -199,6 +235,15 @@ class Parent {
  * HINT: You should be using vital key terms like extends and super
  *
  * ↓ YOUR CODE HERE ↓ */
+class Child extends Parent {
+  constructor(name, age){
+    super(name, age);
+  }
+}
+
+let firstChild = new Child("Pugsley", 10);
+firstChild.details();
+  
 
 /*-------------------------------------------------------*/
 // Question 7: Put it all together
@@ -218,5 +263,44 @@ Question 7: Put it all together \n`)
  * Step 10: Display the movies information to the console, using the new instance list
  *
  * ↓ YOUR CODE HERE ↓ */
+class Movie {
+  constructor(title, director){
+    this.title = title
+    this.director = director
+  }
+
+  output(){
+    console.log(`The movie ${this.title} was directed by ${this.director}.`)
+  }  
+}
+
+ class List{
+  constructor(){
+    this.movies = [];
+  }
+
+  addMovie(movie){
+    this.movies.push(movie);
+  }
+
+  displayMovies(){
+    let movieDisplay = "";
+    for(let i = 0; i < this.movies.length; i++){
+      movieDisplay += `${this.movies[i].title}, directed by ${this.movies[i].director}` + '\n';
+    }
+    return movieDisplay;
+  }
+ }
+
+ let movie1 = new Movie("Jurassic Park", "Steven Spielberg");
+ let movie2 = new Movie("How the Grinch stole Christmas", "Ron Howard");
+
+ movie1.output();
+ movie2.output();
+
+let list = new List;
+list.addMovie(movie1);
+list.addMovie(movie2);
+console.log(list.displayMovies());
 
 console.log(`-----------Finished------------`)
