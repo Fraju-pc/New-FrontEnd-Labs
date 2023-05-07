@@ -61,4 +61,107 @@ describe('Week 6 Lab Tests:', () => {
     })
   })
   /*--------------------------NEW TESTS BELOW-------------------------------*/
+
+  describe('Sorted Array of numbers', () => {
+    it('#Should return arrayOfNumbers = [1, 2, 3, 4, 5]', () => {
+      let arrayOfNumbers = [1, 5, 3, 2, 4]
+      arrayOfNumbers = arrayOfNumbers.sort((a, b) => a - b)
+      //console.log(arrayOfNumbers)
+      expect(arrayOfNumbers).to.deep.equal([1, 2, 3, 4, 5]);
+    })
+  })
+
+  describe('Manage My Wallet', () => {
+    it('#Should return My Wallet = 88.01', () => {
+      class Wallet {
+        constructor(startingMoney) {
+          this.money = startingMoney
+        }
+      
+        addMoney(amount) {
+          this.money += amount
+        }
+      
+        removeMoney(amount) {
+          this.money -= amount
+        }
+      }
+      const myWallet = new Wallet(100)
+      myWallet.removeMoney(14.99)
+      myWallet.addMoney(3)
+      expect(myWallet.money).to.equal(88.01);
+    })
+  })
+
+  describe('Switch Selection for Day of the Week', () => {
+    it('#Should return Friday', () => {
+
+      const dayOfTheWeek = (num) => {
+        switch (num) {
+          case 1:
+            return 'Monday'
+            break
+          case 2:
+            return 'Tuesday'
+            break
+          case 3:
+            return 'Wednesday'
+            break
+          case 4:
+            return 'Thursday'
+            break
+          case 5:
+            return 'Friday'
+            break
+          case 6:
+            return 'Saturday'
+            break
+          case 7:
+            return 'Sunday'
+            break;
+          default:
+            console.log('Err. Something went wrong.')
+        }
+      
+      }
+      //console.log(dayOfTheWeek(5))
+      expect(dayOfTheWeek(5)).to.deep.equal('Friday');
+    })
+  })
+
+
+  describe('Only Wizards Shall pass the array.filter() Method', () => {
+    it('#Should return an array of 2 objects', () => {
+
+      const movieCharacters = [
+        {
+          name: 'Howl',
+          isAWizard: true,
+          quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
+        },
+        {
+          name: 'Kalcifer',
+          isAWizard: false,
+          quote: `I don't cook! I'm a scary and powerful fire demon!`,
+        },
+        {
+          name: 'Gandalf',
+          isAWizard: true,
+          quote: `You shall not pass!`,
+        },
+        {
+          name: 'Luke Skywalker',
+          isAWizard: false,
+          quote: `May the Force be with you.`,
+        },
+      ]
+      
+      function onlyWizards(arrayOfCharacters) {
+        return arrayOfCharacters.filter((character) => character.isAWizard == true)
+      }
+      expect((onlyWizards(movieCharacters).length)).to.equal(2);
+    })
+  })
+
+
 })
