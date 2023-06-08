@@ -31,55 +31,52 @@
 /*-------------------------------------------------*/
 // Question 1: Replace Text with JQuery
 
-/* Looking at the HTML file, you can observe that Question 1 has a DIV, an INPUT, and a BUTTON. The BUTTON is programmed to call a function called "replaceTextInDiv" on the event of a click. 
+/* Looking at the HTML file, you can observe that Question 1 has a DIV, an INPUT, and a BUTTON. The BUTTON is programmed to call a 
+function called "replaceTextInDiv" on the event of a click. 
 	* Step 1: Create a function named "replaceTextInDiv". 
-	* Step 2: The "replaceTextInDiv" function should get the value typed into the INPUT, with an id name of "input-value", then replaces the text in the DIV, with a class name of "put-here", with the value from the input.
+	* Step 2: The "replaceTextInDiv" function should get the value typed into the INPUT, with an id name of "input-value", 
+	then replaces the text in the DIV, with a class name of "put-here", with the value from the input.
 	* Step 3: In the "replaceTextInDiv" function, after replacing the text in the DIV make sure to clear out the input value.
 	* 
 	* ↓ YOUR CODE HERE ↓ */
+let div = $('.put-here');
+let input = $('#input-value');
 
+function replaceTextInDiv(){
+let newText = input.val();
 
-
-
-
-
-
-
+div.text(newText);
+input.val('');
+}
 
 
 /*------------------------------------------------*/
 // Question 2: Before and After 
  
-/* In the HTML file, there is an image of a dog in the DIV with a class name of "dog".  You will programmatically add 2 more images, one before the dog DIV and another image after the dog DIV.
-	* Step 1: Insert a DIV element with an IMAGE nested inside BEFORE the dog DIV. The image should be: <img src='images/fish.png' width='200'>.(See documentation: https://api.jquery.com/before/)
-	* Step 2: Insert a DIV element with an IMAGE nested inside BEFORE the dog DIV. The image should be:<img src='images/cat.png' width='200'>. (See documentation: https://api.jquery.com/after/)
+/* In the HTML file, there is an image of a dog in the DIV with a class name of "dog".  You will programmatically add 2 more images, 
+one before the dog DIV and another image after the dog DIV.
+	* Step 1: Insert a DIV element with an IMAGE nested inside BEFORE the dog DIV. The image should be: 
+	<img src='images/fish.png' width='200'>.(See documentation: https://api.jquery.com/before/)
+	* Step 2: Insert a DIV element with an IMAGE nested inside BEFORE the dog DIV. The image should be:
+	<img src='images/cat.png' width='200'>. (See documentation: https://api.jquery.com/after/)
 	* Step 3: When done, there should be three images on the screen: fish, dog, cat. 
 	* 
 	* ↓ YOUR CODE HERE ↓ */
-
-
+$('.dog').before("<div><img src='images/fish.png' width='200'></div>");
+$('.dog').after("<div><img src='images/cat.png' width='200'></div>");
 	
-
-
-
-
-
 
 /*-------------------------------------------------*/
 // Question 3: Remove 
  
-/* In the HTML file, there is are 3 PARAGRAPHS with some random text (Lorem Ipsum). Each paragraph has its own id: "lorem1", "lorem2", or "lorem3".
+/* In the HTML file, there is are 3 PARAGRAPHS with some random text (Lorem Ipsum). Each paragraph has its own id: "lorem1", "lorem2", 
+	or "lorem3".
 	* Step 1: Write some code that will remove the second PARAGRAPH from the page.(See documentation: https://api.jquery.com/remove/)
 	* Step 2: Save after your changes, the second PARAGRAPH should be gone.
 	* 
 	*
 	* ↓ YOUR CODE HERE ↓ */
-
-
-
-
-	
-
+$('#lorem2').remove();
 
 
 /*-------------------------------------------------*/
@@ -97,8 +94,10 @@ $.get(CATS_API_URL, (data)=> {
 });
 
 //Notice there are 3 parts...
-// GET is what we want to do ( 'URL GOES HERE as a STRING' , METHOD/FUNCTION that will do something with the data that is returned goes here);
-//The cat fact from the returned data is printed to the console AND appended as a PARAGRAPH to the DIV that has a class name of "cats". (See documentation: https://api.jquery.com/category/ajax/shorthand-methods/)
+// GET is what we want to do ( 'URL GOES HERE as a STRING' , METHOD/FUNCTION that will do something with the data that is returned 
+//goes here);
+//The cat fact from the returned data is printed to the console AND appended as a PARAGRAPH to the DIV that has a class name of "cats". 
+//(See documentation: https://api.jquery.com/category/ajax/shorthand-methods/)
 
 
 /* Instructions:
@@ -109,19 +108,24 @@ $.get(CATS_API_URL, (data)=> {
  * 
  * 
  * ↓ YOUR CODE HERE ↓ */
+let jokeUrl = "https://official-joke-api.appspot.com/random_joke";
 
-
-
-
-
-
+$.get(jokeUrl, (data)=> {
+    console.log(data);
+    $('.jokes').prepend(`<p> ${data.setup} </p>`);
+	$('.jokes').append(`<p> ${data.punchline} </p>`);
+});
 
 
 /*--------------------------------------------------*/
 
 // Question 5: Fake API 
 
-/* We are going to use a JSON Server as a fake API. APIs in general will be covered throughout the rest of this course. This is a way to practice making calls to an API without worrying about authentication and Keys which are usually required for using an API. In order to complete this lab you will have to do some extra installations. The db.json file for the json-server is already included with this lab.
+/* We are going to use a JSON Server as a fake API. APIs in general will be covered throughout the rest of this course. This is a way to 
+practice making calls to an API without worrying about authentication and Keys which are usually required for using an API. 
+In order to complete this lab you will have to do some extra installations. The db.json file for the json-server is already 
+included with this lab.
+
 	* Step 1: In the terminal, change into this files directory and run the following commands:
 			`npm install -g json-server`
 			`json-server --watch db.json`
@@ -132,21 +136,31 @@ $.get(CATS_API_URL, (data)=> {
 			Home
 			http://localhost:3000
 
-	* Step 3: Take a look at the db.json file and the data that is provided.The endpoint used to access this data will be 'gradebook' as shown in the Resources link. The Resources link will be your fake API url. 
-	* Step 4: Make a 'GET' request to the JSON server using the Resources link like an API url. Print the returned data to the console. Look at the console to compare the data printed and the data in the db.json file.  
-	* Step 5: Make another 'GET' request to the JSON server but after the ENDPOINT type in /7 this will GET the information for only the student with an ID of 7. Print the returned data to the console. 
-	* Step 6: In the GET calls anonymous function, write a JQuery method that will put the data in the empty DIV with a class name of "result". Access the student data with the object dot notation and concatenate the student data into a string that looks something like this: 
+	* Step 3: Take a look at the db.json file and the data that is provided.The endpoint used to access this data will be 'gradebook' 
+	  as shown in the Resources link. The Resources link will be your fake API url. 
+	* Step 4: Make a 'GET' request to the JSON server using the Resources link like an API url. Print the returned data to the console. 
+	  Look at the console to compare the data printed and the data in the db.json file.  
+	* Step 5: Make another 'GET' request to the JSON server but after the ENDPOINT type in /7 this will GET the information for only 
+	  the student with an ID of 7. Print the returned data to the console. 
+	* Step 6: In the GET calls anonymous function, write a JQuery method that will put the data in the empty DIV with a class name of 
+	  "result". Access the student data with the object dot notation and concatenate the student data into a string that looks something 
+	  like this: 
 	*      (data.firstname + " " + data.lastname + ", Grade: "  + data.grade + "%")
-	* Step 7: Choose a different student Id and make another GET call that will print that  students data to the DOM like in Step 5 and 6, but this time use the DIV with a class name of "new".
+	* Step 7: Choose a different student Id and make another GET call that will print that  students data to the DOM like in Step 5 and 6, 
+	  but this time use the DIV with a class name of "new".
 	* 
 	*
 	* ↓ YOUR CODE HERE ↓ */
-
-
+$.get('http://localhost:3000/gradebook/7', (data) =>{
+	console.log(data);
+	$('.result').text(data.firstname + " " + data.lastname + ", Grade: "  + data.grade + "%");
 	
+})
 
-
-
+$.get('http://localhost:3000/gradebook/20', (data) =>{
+	console.log(data);
+	$('.new').text(data.firstname + " " + data.lastname + ", Grade: "  + data.grade + "%");
+})
 
 
 
@@ -178,13 +192,21 @@ $(".test").on("click", function(){
 	* 
 	*
 	* ↓ YOUR CODE HERE ↓ */
+	$(".postBtn").on("click", function(){
+	
+		let fname = $('#firstname').val();
+		let lname = $('#lastname').val();
+		let grade = $('#grade').val();
+		
+		const API = "http://localhost:3000/gradebook";
 
-
-
-
-
-
-
-
-
+		$.post(API, 
+				{ 
+						"firstname": fname,
+						"lastname": lname,
+						"grade": grade    
+				}
+		);
+	
+	});
 /*--------------------------------------------------*/

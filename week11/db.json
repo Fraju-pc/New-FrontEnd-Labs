@@ -119,6 +119,18 @@
       "lastname": "Walsh",
       "grade": 79,
       "id": "20"
+    },
+    {
+      "firstname": "Gerry",
+      "lastname": "Herbertson",
+      "grade": "80",
+      "id": "isacfHb"
+    },
+    {
+      "firstname": "Patrick",
+      "lastname": "Corcoran",
+      "grade": "100",
+      "id": "mNiHe8M"
     }
   ]
 }
