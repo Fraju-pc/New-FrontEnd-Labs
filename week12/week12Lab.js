@@ -75,12 +75,25 @@ Part 1: Setup your JSON server`)
  * Step 3: Below, create a const declaration for your URL endpoint
  *
  * ↓ YOUR CODE HERE ↓ */
-
+const url = `http://localhost:3000/studentRoster`
 /*------------------------ Part 2: HTTP Verb: GET ------------------------*/
 console.log(
   `-------------------------- 
 Part 2: GET and displaying the information`
 )
+$.get(url).then(data => {
+  data.map(student => {
+    $('tbody').append(
+      $(`
+      <tr>  
+        <td>${student.fullName}</td>
+        <td>${student.researchAssignment}</td>
+        <td><button onclick="deleteUser(${student.id})">🗑</button></td>
+        </tr>
+      `)
+    )
+  })
+});
 
 /**
  * Step 1: Use $.get(api_url_here).then(data => console.log(data)) to check if
@@ -116,6 +129,13 @@ Part 3: POST and adding new students`
  *         Your button should now post a new user on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+$('#submitStudent').click(function () {
+    //console.log('please work');
+    $.post(url, {
+      fullName: $('#fullName').val(),
+      researchAssignment: $('#researchAssignment').val(),
+    })
+});
 
 /*------------------------ Part 4: HTTP Verb: DELETE ------------------------*/
 console.log(
@@ -149,6 +169,11 @@ Part 4: DELETE and deleting individual students`
  *         Your elements should now be getting deleted!
  *
  * ↓ YOUR CODE HERE ↓ */
+function deleteUser(id){
+  $.ajax(`${url}/${id}`, {
+    method: 'delete'
+  })
+};
 
 /*------------------------ HTTP Verb: UPDATE ------------------------*/
 console.log(
