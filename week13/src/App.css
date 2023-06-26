@@ -1,0 +1,35 @@
+nav{
+    width: 100vw;
+    background-color: rgb(98,107,202);
+    margin-top: 0;
+    padding: 0;
+    color: white;
+    font-size: 24px;
+    padding: 1px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+nav ul li {
+    list-style-type: none;
+    margin-right: 1em;
+}
+
+nav ul li:hover {
+    color: rgb(0,0,0,0.705);
+}
+nav ul li:active {
+background-color: green;
+}
+
+.welcome {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: beige;
+    padding: 1em;
+}
