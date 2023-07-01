@@ -38,3 +38,26 @@
   background-color: #eeeeee;
   padding: 1em;
 }
+
+.ctable{
+  margin: auto;  
+  text-align: start;
+  justify-content: center;
+ 
+  padding: 4em;
+  box-shadow: 4px solid black;
+}
+
+.ctable table{
+  border: 4px solid black;
+}
+.ctable td{
+  border: 4px solid black;
+  margin: auto;
+  padding: 1em;
+}
+.ctable th{
+  border: 4px solid black;
+  margin: auto;
+  padding: 1em;
+}
